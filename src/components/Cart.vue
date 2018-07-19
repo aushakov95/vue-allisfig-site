@@ -8,7 +8,7 @@
       <div v-if="cart.data.length > 0">
         <div class="ui divided items">
           <div class="item" v-for="item in cart.data" :key="item.id">
-            <div class="ui small image">
+            <div class="ui small rounded image">
               <img v-bind:src="item.image.href" alt="">
             </div>
             <div class="content">
@@ -25,12 +25,13 @@
         <div class="ui large clearing segment">
           <strong>Sub total:</strong> {{ cart.meta.display_price.with_tax.formatted }}
           <span>
-            <router-link :to="'/checkout'" class="ui black right floated button">Checkout</router-link>
+            <router-link :to="'/checkout'" class="ui green right floated button">Checkout</router-link>
           </span>
         </div>
       </div>
     </div>
 </template>
+
 <script>
 import MoltinService from '../services/moltin.js'
 

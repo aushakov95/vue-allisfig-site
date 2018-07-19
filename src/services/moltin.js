@@ -1,13 +1,13 @@
 import { gateway as MoltinGateway } from '@moltin/sdk'
 
 const Moltin = MoltinGateway({
-  client_id: 'j6hSilXRQfxKohTndUuVrErLcSJWP15P347L6Im0M4'
+  client_id: 'ATVHG9WxikoeSKKYEMqtokgKN5edX7yN8HoocAod8S'
 })
 
 export default {
 
   getHomepageProducts () {
-    return Moltin.Products.Filter({}).With('files').Limit(8).All()
+    return Moltin.Products.With('files, main_images, collections').Limit(8).All()
   },
 
   findBySlug (slug) {
@@ -15,7 +15,7 @@ export default {
       eq: {
         slug: slug
       }
-    }).With(['files', 'brands']).Limit(1).All()
+    }).With('files, main_image, collections').Limit(1).All()
   },
 
   getCart () {
@@ -36,6 +36,10 @@ export default {
 
   pay (orderId, paymentData) {
     return Moltin.Orders.Payment(orderId, paymentData)
+  },
+
+  deleteCart () {
+    return Moltin.Cart.Delete()
   }
 
 }

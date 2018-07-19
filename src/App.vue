@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <div class="ui huge inverted top fixed menu">
+    <div class="ui secondary top menu">
       <div class="ui text container">
-        <router-link to="/" class="header item">
-          <img src="/static/moltin-light-hex.svg" class="ui mini image" style="margin-right: 1.5em;">Vue.js Store
+        <router-link to="/" class="item">
+          &Delta;F
         </router-link>
         <router-link to="/cart" class="right item">
-          Cart ({{ cart.data.length }} items)
+          <i aria-hidden="true" class="cart icon"></i>({{ cart.data.length }} items)
         </router-link>
       </div>
     </div>
