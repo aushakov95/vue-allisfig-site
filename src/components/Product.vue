@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="ui container">
     <div class="ui items">
       <div class="item">
         <div class="ui medium rounded image">
@@ -12,14 +13,14 @@
             <p>{{ product.data[0].meta.display_price.with_tax.formatted }}</p>
           </div>
             <div class="extra">
-              <div class="ui fluid action input">
+              <div class="ui fluid action input" style="width: 27%;">
                 <input type="number" placeholder="Quantity" v-model="qty">
                 <button class="ui green labeled icon button" role="button" v-on:click.prevent="addToCart(product.data[0].id, qty)">
                   <i aria-hidden="true" class="plus cart icon"></i>Add to Cart
                 </button>
             </div>
           </div>
-          <div class="ui segment">
+          <div class="ui segment" style="width: 50%;">
             <h3 class="ui header">About this product</h3>
             <p>{{ product.data[0].description }}</p>
           </div>
@@ -37,7 +38,7 @@
     </table>
     </div>
 
-
+  </div>
   </div>
 </template>
 <script>

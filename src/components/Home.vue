@@ -1,22 +1,18 @@
 <template>
 
   <div>
-    <div class="ui items" v-for="product in products.data" :key="product.id">
-      <div class="item">
-        <router-link :to="'/products/' + product.slug" class="ui small image">
+    <div class="ui four column centered grid">
+    <div class="ui column" v-for="product in products.data" :key="product.id">
+
+      <div class="ui medium rounded image">
+        <router-link :to="'/products/' + product.slug">
           <img :src="getProductThumb(product)" alt="">
         </router-link>
-        <div class="content">
-          <router-link :to="'/products/' + product.slug" class="header">
-            {{ product.name }}
-          </router-link>
-          <div class="meta">{{ product.meta.display_price.with_tax.formatted }}</div>
-          <div class="description">{{ product.description }}</div>
-        </div>
-      </div>
     </div>
+    <div class="ui header" >{{ product.name }}</div>
   </div>
-
+  </div>
+</div>
 </template>
 
 <script>
