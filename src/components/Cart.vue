@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="ui container">
       <div class="ui warning message" v-if="cart.data.length == 0">
         <div class="header">Your cart is empty</div>
         <p>You'll need to add some items to the cart before you can checkout.</p>
