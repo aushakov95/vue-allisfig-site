@@ -1,9 +1,8 @@
 <template>
 
   <div>
-    <div class="ui four column centered grid">
+    <div class="ui four column centered stackable grid">
     <div class="ui column" v-for="product in products.data" :key="product.id">
-
       <div class="ui medium rounded image">
         <router-link :to="'/products/' + product.slug">
           <img :src="getProductThumb(product)" alt="">
