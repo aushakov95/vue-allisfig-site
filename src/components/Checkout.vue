@@ -1,4 +1,5 @@
 <template>
+  <div class="ui text container">
   <form class="ui form">
   <div class="ui segment blue raised" id="shipping">
   <h4 class="ui large header">Shipping Information</h4>
@@ -686,6 +687,7 @@
    </div>
     <div class="ui button large green pay-with-stripe" v-on:click.prevent="pay()" :disabled='!complete' tabindex="0">Submit Order</div>
   </form>
+</div>
 </template>
 <script>
 import MoltinService from '../services/moltin.js'

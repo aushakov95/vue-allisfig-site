@@ -4,11 +4,13 @@
     <div class="ui four column centered stackable grid">
     <div class="ui column" v-for="product in products.data" :key="product.id">
       <div class="ui medium rounded image">
+        <div class="ui black large bottom attached label">
+          {{ product.name }}
+        </div>
         <router-link :to="'/products/' + product.slug">
           <img :src="getProductThumb(product)" alt="">
         </router-link>
     </div>
-    <div class="ui header" >{{ product.name }}</div>
   </div>
   </div>
 </div>
