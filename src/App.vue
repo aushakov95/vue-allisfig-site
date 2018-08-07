@@ -1,14 +1,19 @@
 <template>
   <div id="app">
+    <div class="ui container">
+    <div class="ui segment raised" id="menu">
     <div class="ui secondary top menu">
       <div class="ui text container">
         <router-link to="/" class="item">
           &Delta;F
         </router-link>
         <router-link to="/cart" class="right item">
-          <i aria-hidden="true" class="cart icon"></i>({{ cart.data.length }} items)
+          Cart
+          <div class="floating ui red tiny circular label">{{ cart.data.length }}</div>
         </router-link>
       </div>
+    </div>
+    </div>
     </div>
     <router-view :cart="cart" @cart-updated="onCartUpdated"></router-view>
   </div>
@@ -40,4 +45,12 @@ export default {
 </script>
 
 <style>
+#app {
+  margin-top: 1.5em;
+}
+
+#menu {
+  margin-bottom: 1.5em;
+}
+
 </style>
