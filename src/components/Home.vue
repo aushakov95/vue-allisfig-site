@@ -1,6 +1,6 @@
 <template>
 
-  <div>
+  <div class="ui container">
     <div class="ui four column centered stackable grid">
     <div class="ui column" v-for="product in products.data" :key="product.id">
       <div class="ui medium rounded image">
