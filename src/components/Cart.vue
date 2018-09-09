@@ -1,34 +1,67 @@
 <template>
     <div class="ui container">
+      <h1 class="ui header">SHOPPING CART</h1>
       <div class="ui warning message" v-if="cart.data.length == 0">
         <div class="header">Your cart is empty</div>
         <p>You'll need to add some items to the cart before you can checkout.</p>
       </div>
 
       <div v-if="cart.data.length > 0">
-        <div class="ui divided items">
-          <div class="item" v-for="item in cart.data" :key="item.id">
-            <div class="ui small rounded image">
-              <img v-bind:src="item.image.href" alt="">
-            </div>
-            <div class="content">
-              <div class="header">{{ item.name }}</div>
-              <div class="meta">{{ item.quantity }}x {{ item.meta.display_price.with_tax.value.formatted }}</div>
-              <button class="ui basic icon right floated button" role="button" v-on:click.prevent="removeFromCart(item.id)">
-                <i aria-hidden="true" class="remove icon"></i>
-              </button>
-            </div>
+        <div class="ui clearing segment raised">
+        <table class="ui very basic unstackable table">
+          <thead>
+          <tr>
+            <th>
+              ITEM
+            </th>
+            <th>
+            </th>
+            <th>
+              QTY.
+            </th>
+            <th>
+            PRICE
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="item in cart.data" :key="item.id">
+              <td>
+                <button class="ui basic icon small button" id="remove-button" role="button" v-on:click.prevent="removeFromCart(item.id)">
+                  <i aria-hidden="true" class="remove icon"></i>
+                </button>
+                <div class="ui image">
+                  <img v-bind:src="item.image.href" class="ui tiny rounded image">
+                </div>
+              </td>
+              <td>
+                <h5 class="ui header">
+                  {{ item.name }}
+                </h5>
+              </td>
+              <td>
+                <select>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </td>
+              <td>
+                <h5 class="ui header price">{{ item.meta.display_price.with_tax.value.formatted }}</h5>
+              </td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="ui divider" id="last-divider"></div>
+          <div class="ui header right floated">
+            Subtotal: <span class="price">{{ cart.meta.display_price.with_tax.formatted }}</span>
           </div>
-        </div>
-        <div class="ui divider"></div>
-
-        <div class="ui large clearing segment">
-          <strong>Sub total:</strong> {{ cart.meta.display_price.with_tax.formatted }}
-          <span>
-            <router-link :to="'/checkout'" class="ui green right floated button">Checkout</router-link>
-          </span>
-        </div>
       </div>
+      <span>
+        <router-link :to="'/checkout'" class="ui green right floated huge button" id="checkout-button">Checkout</router-link>
+      </span>
+    </div>
     </div>
 </template>
 
@@ -47,4 +80,33 @@ export default {
   }
 }
 </script>
-<style></style>
+<style>
+#centered-items {
+  display: flex;
+  align-items: center;
+}
+
+#checkout-button {
+  background-color: #80E3C5 !important;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16) !important;
+}
+
+.price {
+  color: #4CAC53 !important;
+}
+
+#last-divider {
+  margin-top: -12px;
+}
+
+#checkout-button:hover {
+  background-color: #66b59d !important;
+}
+
+@media screen and (max-width: 600px) {
+  #remove-button {
+    display: none;
+  }
+}
+
+</style>

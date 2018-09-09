@@ -48,10 +48,24 @@ export default {
 
 body {
   background-color: #F0F0F7;
+  font-family: 'Nunito', sans-serif !important;
+
 }
 
 #app {
   margin-top: 1.5em;
+  font-family: 'Nunito', sans-serif;
+}
+
+.header {
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: lighter !important;
+}
+
+.button {
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: lighter !important;
+  letter-spacing: 2px;
 }
 
 #menu {
