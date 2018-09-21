@@ -12,14 +12,15 @@
 
             <p>{{ product.data[0].meta.display_price.with_tax.formatted }}</p>
           </div>
-            <div class="extra">
-              <div class="ui fluid action input" style="width: 27%;">
-                <input type="number" placeholder="Quantity" v-model="qty">
-                <button class="ui green labeled icon button" role="button" v-on:click.prevent="addToCart(product.data[0].id, qty)">
+              <select v-model="qty">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+              <button class="ui green labeled icon button" role="button" v-on:click.prevent="addToCart(product.data[0].id, qty)">
                   <i aria-hidden="true" class="plus cart icon"></i>Add to Cart
-                </button>
-            </div>
-          </div>
+              </button>
           <div class="ui segment" style="width: 50%;">
             <h3 class="ui header">About this product</h3>
             <p>{{ product.data[0].description }}</p>
