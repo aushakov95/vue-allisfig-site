@@ -41,12 +41,13 @@
               </td>
               <td>
                 <select>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
+                  <option value="1" :selected="1 == item.quantity">1</option>
+                  <option value="2" :selected="2 == item.quantity">2</option>
+                  <option value="3" :selected="3 == item.quantity">3</option>
+                  <option value="4" :selected="4 == item.quantity">4</option>
                 </select>
               </td>
+
               <td>
                 <h5 class="ui header price">{{ item.meta.display_price.with_tax.value.formatted }}</h5>
               </td>
@@ -71,6 +72,9 @@ import MoltinService from '../services/moltin.js'
 export default {
   name: 'product',
   props: ['cart'],
+  mounted () {
+    MoltinService.getAvailableQuantity()
+  },
   methods: {
     removeFromCart (itemId) {
       MoltinService.removeFromCart(itemId).then((response) => {

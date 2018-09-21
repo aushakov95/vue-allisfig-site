@@ -40,6 +40,40 @@ export default {
 
   deleteCart () {
     return Moltin.Cart.Delete()
+  },
+
+  getAvailableQuantity () {
+    var cartItems
+    /*
+    Moltin.Cart.Items().then((response) => {
+      var itemData = {} //Holds id and and stock available
+      cartItems = response
+      console.log(cartItems)
+      console.log(cartItems.data[0])
+      for (var i = 0; i < cartItems.data.length; i++) {
+        var productId = cartItems.data[i].product_id
+        console.log(productId)
+      }
+    }) */
+
+    Moltin.Cart.Items().then(response => {
+
+      console.log(response)
+    })
+
+    Moltin.Inventories.All().then((inventories) => {
+  // Do something
+      console.log(inventories)
+    })
+    /*
+    Moltin.Inventories.Get("5666e91c-a616-4195-9731-c1ee85dec31b").then(response => {
+      console.log("getting data")
+      //console.log(inventories.data)
+    }) */
+
+  /*  Moltin.Inventories.Get(itemId).then(response => {
+      return response.data.available
+    }) */
   }
 
 }
