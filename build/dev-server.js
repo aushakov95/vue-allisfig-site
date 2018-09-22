@@ -22,13 +22,6 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 // https://github.com/chimurai/http-proxy-middleware
 var proxyTable = config.dev.proxyTable
 
-app.get('*',function(req,res,next){
-  if(req.headers['x-forwarded-proto']!='https')
-    res.redirect('https://www.allblack.design'+req.url)
-  else
-    next() /* Continue to other routes if we're not redirecting */
-})
-
 var app = express()
 var compiler = webpack(webpackConfig)
 
