@@ -18,8 +18,8 @@
                 <option value="3">3</option>
                 <option value="4">4</option>
               </select>
-              <button class="ui green labeled icon button" role="button" v-on:click.prevent="addToCart(product.data[0].id, qty)">
-                  <i aria-hidden="true" class="plus cart icon"></i>Add to Cart
+              <button class="ui green button" role="button" v-on:click.prevent="addToCart(product.data[0].id, qty)">
+                Add to Cart
               </button>
           <div class="ui segment" style="width: 50%;">
             <h3 class="ui header">About this product</h3>
