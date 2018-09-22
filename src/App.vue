@@ -4,9 +4,9 @@
     <div class="ui segment raised" id="menu">
     <div class="ui secondary top menu">
       <div class="ui text container">
-        <router-link to="/" class="item">
+        <a href="/" class="item">
           &Delta;F
-        </router-link>
+        </a>
         <router-link to="/cart" class="right item">
           Cart
           <div class="floating ui red tiny circular label">{{ cart.data.length }}</div>
