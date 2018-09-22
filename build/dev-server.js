@@ -10,6 +10,7 @@ var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
+const secure = require('express-force-https');
 var webpackConfig = process.env.NODE_ENV === 'testing' || 'production'
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
@@ -55,6 +56,8 @@ app.use(require('connect-history-api-fallback')())
 
 // serve webpack bundle output
 app.use(devMiddleware)
+
+app.use(secure)
 
 // enable hot-reload and state-preserving
 // compilation error display
