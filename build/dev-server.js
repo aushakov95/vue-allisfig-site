@@ -50,7 +50,7 @@ Object.keys(proxyTable).forEach(function (context) {
   }
   app.use(proxyMiddleware(options.filter || context, options))
 })
-
+app.use(forceSsl);
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())
 
@@ -62,7 +62,7 @@ app.use(devMiddleware)
 app.use(hotMiddleware)
 
 //Enable forced ssl
-app.use(forceSsl);
+
 
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
