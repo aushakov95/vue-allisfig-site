@@ -40,7 +40,8 @@
                 </h5>
               </td>
               <td>
-                <select>
+                <select v-bind:id="'select-field' + item.id" v-on:change="checkQuantity(item.id)" v-bind:ref="'select-field' + item.id">
+                  <option value="0">0</option>
                   <option value="1" :selected="1 == item.quantity">1</option>
                   <option value="2" :selected="2 == item.quantity">2</option>
                   <option value="3" :selected="3 == item.quantity">3</option>
@@ -80,6 +81,17 @@ export default {
       MoltinService.removeFromCart(itemId).then((response) => {
         this.$emit('cart-updated', response)
       })
+    },
+    checkQuantity (itemId) {
+      console.log("Checking quantity selected")
+      console.log(this.$refs["select-field" + itemId])
+      var selectField = this.$refs["select-field" + itemId]
+      console.log(selectField[0].selectedIndex)
+      if (selectField[0].selectedIndex == 0) {
+        console.log("Attempting to remove")
+        this.removeFromCart(itemId)
+        console.log("Removed item")
+      }
     }
   }
 }
