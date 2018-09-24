@@ -5,7 +5,7 @@
     <div class="ui secondary top menu">
       <div class="ui text container">
         <a href="/" class="item">
-          All Black Design
+          Allison Black
         </a>
         <router-link to="/cart" class="right item">
           Cart
