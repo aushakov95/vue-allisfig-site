@@ -1,34 +1,55 @@
 <template>
   <div class="ui text container">
   <form class="ui form">
+  <div class="ui segment blue raised">
+    <h4 class="ui large header">Contact Information</h4>
+    <div class="field">
+      <label>Email</label>
+      <input v-model="checkoutData.customer.email" name="contact[email]" placeholder="johndoe@email.com" type="email">
+    </div>
+    <div class="field">
+      <label>Name</label>
+      <input v-model="checkoutData.customer.name" name="contact[name]" placeholder="John Doe" type="email">
+    </div>
+  </div>
   <div class="ui segment blue raised" id="shipping">
   <h4 class="ui large header">Shipping Information</h4>
   <div class="field">
     <label>Name</label>
     <div class="two fields">
       <div class="field">
-        <input name="shipping[first-name]" placeholder="First Name" type="text">
+        <input v-model="checkoutData.shipping_address.first_name" name="shipping[first-name]" placeholder="First Name" type="text">
       </div>
       <div class="field">
-        <input name="shipping[last-name]" placeholder="Last Name" type="text">
+        <input v-model="checkoutData.shipping_address.last_name" name="shipping[last-name]" placeholder="Last Name" type="text">
       </div>
     </div>
   </div>
   <div class="field">
-    <label>Shipping Address</label>
+    <label>Address</label>
     <div class="fields">
       <div class="twelve wide field">
-        <input name="shipping[address]" placeholder="Street Address" type="text">
+        <input v-model="checkoutData.shipping_address.line_1" name="shipping[address]" placeholder="Street Address" type="text">
       </div>
       <div class="four wide field">
-        <input name="shipping[address-2]" placeholder="Apt #" type="text">
+        <input v-model="checkoutData.shipping_address.line_2" name="shipping[address-2]" placeholder="Apt #" type="text">
       </div>
+    </div>
+  </div>
+  <div class="fields">
+    <div class="twelve wide field">
+      <label>City</label>
+        <input v-model="checkoutData.shipping_address.city" name="shipping[city]" placeholder="City" type="text">
+    </div>
+    <div class="four wide field">
+      <label>Zip Code</label>
+        <input v-model="checkoutData.shipping_address.postcode" name="shipping[postcode]" placeholder="Zip Code" type="text">
     </div>
   </div>
   <div class="two fields">
     <div class="field">
       <label>State</label>
-      <select class="ui fluid dropdown">
+      <select v-model="checkoutData.shipping_address.county" class="ui fluid dropdown">
         <option value="">State</option>
     <option value="AL">Alabama</option>
     <option value="AK">Alaska</option>
@@ -86,7 +107,7 @@
     <div class="field">
       <label>Country</label>
       <div class="ui fluid search selection dropdown disabled">
-        <input name="country" type="hidden">
+        <input v-model="checkoutData.shipping_address.country" name="country" type="hidden">
         <i class="dropdown icon"></i>
         <div class="default text">United States</div>
         <div class="menu">
@@ -338,37 +359,47 @@
   </div>
   </div>
     <div class="ui segment blue raised" id="billing">
-    <h4 class="ui large header">Billing Information</h4>
+    <h4 class="ui large header">Billing Information </h4>
     <div class="ui checkbox">
-      <input name="example" type="checkbox">
+      <input name="example" type="checkbox" id="same-as-shipping" v-on:change="sameAsShipping" ref="sameAsShipping">
       <label>Same as shipping</label>
     </div>
     <div class="field">
       <label>Name</label>
       <div class="two fields">
         <div class="field">
-          <input name="shipping[first-name]" placeholder="First Name" type="text">
+          <input v-model="checkoutData.billing_address.first_name" name="shipping[first-name]" placeholder="First Name" type="text">
         </div>
         <div class="field">
-          <input name="shipping[last-name]" placeholder="Last Name" type="text">
+          <input v-model="checkoutData.billing_address.last_name" name="shipping[last-name]" placeholder="Last Name" type="text">
         </div>
       </div>
     </div>
     <div class="field">
-      <label>Billing Address</label>
+      <label>Address</label>
       <div class="fields">
         <div class="twelve wide field">
-          <input name="shipping[address]" placeholder="Street Address" type="text">
+          <input v-model="checkoutData.billing_address.line_1" name="shipping[address]" placeholder="Street Address" type="text">
         </div>
         <div class="four wide field">
-          <input name="shipping[address-2]" placeholder="Apt #" type="text">
+          <input v-model="checkoutData.billing_address.line_2" name="shipping[address-2]" placeholder="Apt #" type="text">
         </div>
+      </div>
+    </div>
+    <div class="fields">
+      <div class="twelve wide field">
+        <label>City</label>
+          <input v-model="checkoutData.billing_address.city" name="shipping[city]" placeholder="City" type="text">
+      </div>
+      <div class="four wide field">
+        <label>Zip Code</label>
+          <input v-model="checkoutData.billing_address.postcode" name="shipping[postcode]" placeholder="Zip Code" type="text">
       </div>
     </div>
     <div class="two fields">
       <div class="field">
         <label>State</label>
-        <select class="ui fluid dropdown">
+        <select v-model="checkoutData.billing_address.county" class="ui fluid dropdown">
           <option value="">State</option>
       <option value="AL">Alabama</option>
       <option value="AK">Alaska</option>
@@ -426,7 +457,7 @@
       <div class="field">
         <label>Country</label>
         <div class="ui fluid search selection dropdown disabled">
-          <input name="country" type="hidden">
+          <input v-model="checkoutData.billing_address.country" name="country" type="hidden">
           <i class="dropdown icon"></i>
           <div class="default text">United States</div>
           <div class="menu">
@@ -703,28 +734,28 @@ export default {
       errors: '',
       checkoutData: {
         customer: {
-          name: 'aa',
-          email: 'aa@aa.com'
+          name: '',
+          email: ''
         },
         shipping_address: {
-          first_name: 'John',
-          last_name: 'Doe',
-          line_1: '2nd Floor British India House',
-          line_2: '15 Carliol Square',
-          city: 'Newcastle Upon Tyne',
-          postcode: 'NE1 6UF',
-          county: 'Tyne & Wear',
-          country: 'United Kingdom'
+          first_name: '',
+          last_name: '',
+          line_1: '',
+          line_2: '',
+          city: '',
+          postcode: '',
+          county: '',
+          country: 'United States of America'
         },
         billing_address: {
-          first_name: 'John',
-          last_name: 'Doe',
-          line_1: '2nd Floor British India House',
-          line_2: '15 Carliol Square',
-          city: 'Newcastle Upon Tyne',
-          postcode: 'NE1 6UF',
-          county: 'Tyne & Wear',
-          country: 'United Kingdom'
+          first_name: '',
+          last_name: '',
+          line_1: '',
+          line_2: '',
+          city: '',
+          postcode: '',
+          county: '',
+          country: 'United States of America'
         }
       },
       payment_data: {
@@ -769,7 +800,21 @@ export default {
       }).catch((err) => {
         this.errors = 'There was a problem proccessing your card' + err
       })
+    },
+
+    sameAsShipping() {
+      if (this.$refs.sameAsShipping.checked) {
+        this.checkoutData.billing_address.first_name = this.checkoutData.shipping_address.first_name
+        this.checkoutData.billing_address.last_name = this.checkoutData.shipping_address.last_name
+        this.checkoutData.billing_address.line_1 = this.checkoutData.shipping_address.line_1
+        this.checkoutData.billing_address.line_2 = this.checkoutData.shipping_address.line_2
+        this.checkoutData.billing_address.city = this.checkoutData.shipping_address.city
+        this.checkoutData.billing_address.postcode = this.checkoutData.shipping_address.postcode
+        this.checkoutData.billing_address.county = this.checkoutData.shipping_address.county
+        this.checkoutData.billing_address.country = this.checkoutData.shipping_address.country
+      }
     }
+    
   }
 }
 </script>
