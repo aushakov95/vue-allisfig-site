@@ -3,18 +3,18 @@
   <form class="ui form">
   <div class="ui segment blue raised">
     <h4 class="ui large header">Contact Information</h4>
-    <div class="field">
+    <div class="required field">
       <label>Email</label>
       <input v-model="checkoutData.customer.email" name="contact[email]" placeholder="johndoe@email.com" type="email">
     </div>
-    <div class="field">
+    <div class="required field">
       <label>Name</label>
       <input v-model="checkoutData.customer.name" name="contact[name]" placeholder="John Doe" type="email">
     </div>
   </div>
   <div class="ui segment blue raised" id="shipping">
   <h4 class="ui large header">Shipping Information</h4>
-  <div class="field">
+  <div class="required field">
     <label>Name</label>
     <div class="two fields">
       <div class="field">
@@ -25,7 +25,7 @@
       </div>
     </div>
   </div>
-  <div class="field">
+  <div class="required field">
     <label>Address</label>
     <div class="fields">
       <div class="twelve wide field">
@@ -36,7 +36,7 @@
       </div>
     </div>
   </div>
-  <div class="fields">
+  <div class="required fields">
     <div class="twelve wide field">
       <label>City</label>
         <input v-model="checkoutData.shipping_address.city" name="shipping[city]" placeholder="City" type="text">
@@ -46,7 +46,7 @@
         <input v-model="checkoutData.shipping_address.postcode" name="shipping[postcode]" placeholder="Zip Code" type="text">
     </div>
   </div>
-  <div class="two fields">
+  <div class="required two fields">
     <div class="field">
       <label>State</label>
       <select v-model="checkoutData.shipping_address.county" class="ui fluid dropdown">
@@ -364,9 +364,9 @@
       <input name="example" type="checkbox" id="same-as-shipping" v-on:change="sameAsShipping" ref="sameAsShipping">
       <label>Same as shipping</label>
     </div>
-    <div class="field">
+    <div class="required field">
       <label>Name</label>
-      <div class="two fields">
+      <div class="required two fields">
         <div class="field">
           <input v-model="checkoutData.billing_address.first_name" name="shipping[first-name]" placeholder="First Name" type="text">
         </div>
@@ -375,7 +375,7 @@
         </div>
       </div>
     </div>
-    <div class="field">
+    <div class="required field">
       <label>Address</label>
       <div class="fields">
         <div class="twelve wide field">
@@ -386,7 +386,7 @@
         </div>
       </div>
     </div>
-    <div class="fields">
+    <div class="required fields">
       <div class="twelve wide field">
         <label>City</label>
           <input v-model="checkoutData.billing_address.city" name="shipping[city]" placeholder="City" type="text">
@@ -396,7 +396,7 @@
           <input v-model="checkoutData.billing_address.postcode" name="shipping[postcode]" placeholder="Zip Code" type="text">
       </div>
     </div>
-    <div class="two fields">
+    <div class="required two fields">
       <div class="field">
         <label>State</label>
         <select v-model="checkoutData.billing_address.county" class="ui fluid dropdown">
@@ -814,7 +814,7 @@ export default {
         this.checkoutData.billing_address.country = this.checkoutData.shipping_address.country
       }
     }
-    
+
   }
 }
 </script>
